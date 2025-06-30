@@ -24,13 +24,7 @@ public int getNumPages() {
 
 public static void testBook() {
     System.out.println("=== Testing Book Class ===");
-    
-    // Test default constructor
-    Book emptyBook = new Book();
-    System.out.println("Empty book created with default constructor");
-    System.out.println("Empty book title: " + (emptyBook.getTitle() == null ? "null" : emptyBook.getTitle()));
-    
-    // Test parameterized constructor
+      
     Book book1 = new Book("1984", "George Orwell", 328);
     Book book2 = new Book("To Kill a Mockingbird", "Harper Lee", 281);
     

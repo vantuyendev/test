@@ -39,10 +39,17 @@ public class App {
         SwitchCake.switchCase();
         
         //call test random number
-        System.out.println(randNum.randNum());
+        System.out.println(randNum.generateRandomNumber());
 
         //call test Book
         Book.testBook();
-        
+
+        //call test Leaf
+        Leaf.testleaf();
+
+        //call test Flower
+        Flower.testFlower();
     }
+
+    
     }

@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Compile and Run Java App",
+			"type": "shell",
+			"command": "cd ex1 && javac -d bin src/*.java test/*.java && java -cp bin App",
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": [
+				"$javac"
+			]
+		}
+	]
+}

@@ -1,32 +1,48 @@
-public class App {
-    public static void main(String[] args) {
+// No import statements needed for classes in the same package
 
-        // call test number
+public class App {
+    public static void main(String[] args){
+
+        //call test Number 
+        Number.testNumber();
+        
+        //call test PassObject 
+        PassObject.testPassObject();
+
+        //call test testnumber
+       
         TestNumber.testNumber();
 
         // call test String
         StringTest.test();
 
         // call Circuit test
+   
         ShortCircuitTest.test();
 
-        // call test casting
+        //call test casting
+
         CastingTest.testDouble();
         CastingTest.testFloat();
-        CastingTest.testCasting();        // call Test if-else control
-        CaseCake.cake(5);
+        CastingTest.testCasting();
 
-        // call test break and continue
-        // BreakAndContinue.main(new String[0]); // original main method
+        // call Test if-else control
+       
+        CaseCake.cake(10);
+        
+        //call test break and continue
+
         BreakAndContinue.WhileTest(10);
         BreakAndContinue.DoWhileTest(10);
 
-        // call test switch
+        //call test switch
         SwitchCake.switchCase();
-
-        // call test random number        System.out.println("Random number: " + randNum.randNum());        // call test random number
-        System.out.println("Random number: " + randNum.randNum());
         
-        System.out.println("=== All tests completed successfully! ===");
+        //call test random number
+        System.out.println(randNum.randNum());
+
+        //call test Book
+        Book.testBook();
+        
     }
-}
+    }

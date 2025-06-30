@@ -10,6 +10,8 @@ public class Leaf {
         return this; //Leaf
     }   
     void print() { 
+        System.out.println("=== Testing Leaf Class ===");
         System.out.println("i = " + i); 
+        System.out.println("=== Leaf Testing Complete ===\n");
     }
 }

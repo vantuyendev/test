@@ -47,11 +47,4 @@ public static void testBook() {
     
     System.out.println("=== End Testing Book Class ===\n");
 }
-
-public static void main(String[] args) {
-Book myBook = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180);
-System.out.println("Book Title: " + myBook.getTitle());
-System.out.println("Book Author: " + myBook.getAuthor());
-System.out.println("Book Pages: " + myBook.getNumPages());
-}
 }

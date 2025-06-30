@@ -9,12 +9,12 @@ public class Flower {
         //! this(s); // can't do it twice
         this.s = s;
     }
-    Flower() { this("hi", 47); 
-    } // default constructor
+    Flower() { this("hi", 47); } // default constructor
     
     public static void testFlower() {
         System.out.println("=== Testing Flower Class ===");
         String s = new String("null");
+        System.out.println("Local variable s: " + s);
         System.out.println("=== Flower Testing Complete ===\n");
     }
 }

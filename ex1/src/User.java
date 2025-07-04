@@ -78,7 +78,7 @@ public class User {
         
         // Test setters
         user1.setAge(26);
-        user1.setEmail("john.doe@newemail.com");
+        user1.setEmail("abc@newemail.com");
         System.out.println("Updated User 1: " + user1.getName() + ", " + user1.getEmail() + ", " + user1.getAge());
         
         // Clean up

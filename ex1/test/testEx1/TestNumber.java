@@ -1,3 +1,4 @@
+package testEx1;
 public class TestNumber {
     public static void testNumber() {
         System.out.println("=== Testing Numbers ===");

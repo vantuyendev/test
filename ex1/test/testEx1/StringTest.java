@@ -1,3 +1,4 @@
+package testEx1;
 public class StringTest {
     public static void test() {
         System.out.println("=== Testing Strings ===");

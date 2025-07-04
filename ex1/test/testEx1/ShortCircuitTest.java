@@ -1,3 +1,4 @@
+package testEx1;
 public class ShortCircuitTest {
     public static void test() {
             System.out.println("=== Testing Short Circuit Evaluation ===");

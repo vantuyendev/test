@@ -1,5 +1,19 @@
 // No import statements needed for classes in the same package
 
+import ex1.Book;
+import ex1.BreakAndContinue;
+import ex1.CaseCake;
+import ex1.Flower;
+import ex1.Leaf;
+import ex1.Number;
+import ex1.PassObject;
+import ex1.SwitchCake;
+import ex1.randNum;
+import testEx1.CastingTest;
+import testEx1.ShortCircuitTest;
+import testEx1.StringTest;
+import testEx1.TestNumber;
+
 public class App {
     public static void main(String[] args){
 
@@ -51,6 +65,14 @@ public class App {
         Flower.testFlower();
 
         //call test Person
-     
+        
+        //call test User (Practice 3)
+        User.testUser();
+        
+        //call test Time (Practice 3)
+        Time.testTime();
+        
+        //call test Recursion (Practice 3)
+        Recursion.testRecursion();
     }
-    }
+}

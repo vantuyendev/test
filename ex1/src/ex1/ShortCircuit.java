@@ -1,3 +1,4 @@
+package ex1;
 public class ShortCircuit {
     static boolean test1(int val) {
         System.out.println("test1(" + val + "): " + (val < 1));

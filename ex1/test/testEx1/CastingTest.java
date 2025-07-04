@@ -1,3 +1,4 @@
+package testEx1;
 public class CastingTest {
     public static void testDouble() {
         System.out.println("=== Testing Double Casting ===");

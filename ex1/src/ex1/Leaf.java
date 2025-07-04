@@ -1,3 +1,4 @@
+package ex1;
 public class Leaf {
     int i = 0;
     

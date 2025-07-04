@@ -1,3 +1,4 @@
+package ex1;
 public class Flower {
     int petalCount = 0;
     String s;

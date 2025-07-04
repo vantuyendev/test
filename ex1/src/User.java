@@ -66,8 +66,8 @@ public class User {
     public static void testUser() {
         System.out.println("\n=== Testing User Class ===");
         
-        User user1 = new User("John Doe", "john@email.com", 25);
-        User user2 = new User("Jane Smith", "jane@email.com", 30);
+        User user1 = new User("Tuyen", "tuyen@email.com", 19);
+        User user2 = new User("ABC", "abc@email.com", 30);
         User user3 = new User(user1); // Copy constructor
         
         System.out.println("Total users created: " + User.getUserCount());

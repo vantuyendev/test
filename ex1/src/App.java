@@ -7,6 +7,7 @@ import p1.Flower;
 import p1.Leaf;
 import p1.Number;
 import p1.PassObject;
+import p1.Person;
 import p1.SwitchCake;
 import p1.randNum;
 import testp1.CastingTest;
@@ -65,6 +66,7 @@ public class App {
         Flower.testFlower();
 
         //call test Person
+        Person.testPerson();
         
         //call test User (Practice 3)
         User.testUser();

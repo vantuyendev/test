@@ -6,7 +6,7 @@ public class PassObject {
     }
 
     public static void testPassObject() {
-        System.out.println("=== Testing PassObject (Object Parameter Passing) ===");
+        System.out.println("=== Testing PassObject ===");
         
         Number n = new Number();
         n.i = 14;

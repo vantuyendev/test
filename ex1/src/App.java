@@ -1,18 +1,18 @@
 // No import statements needed for classes in the same package
 
-import ex1.Book;
-import ex1.BreakAndContinue;
-import ex1.CaseCake;
-import ex1.Flower;
-import ex1.Leaf;
-import ex1.Number;
-import ex1.PassObject;
-import ex1.SwitchCake;
-import ex1.randNum;
-import testEx1.CastingTest;
-import testEx1.ShortCircuitTest;
-import testEx1.StringTest;
-import testEx1.TestNumber;
+import p1.Book;
+import p1.BreakAndContinue;
+import p1.CaseCake;
+import p1.Flower;
+import p1.Leaf;
+import p1.Number;
+import p1.PassObject;
+import p1.SwitchCake;
+import p1.randNum;
+import testp1.CastingTest;
+import testp1.ShortCircuitTest;
+import testp1.StringTest;
+import testp1.TestNumber;
 
 public class App {
     public static void main(String[] args){

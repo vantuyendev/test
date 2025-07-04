@@ -1,4 +1,4 @@
-package ex1;
+package p1;
 public class SwitchCake {
     public static void switchCase() {
         System.out.println("=== Testing Switch Case ===");

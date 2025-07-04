@@ -1,4 +1,4 @@
-package ex1;
+package p1;
 public class PassObject {
     static void f(Number m) {
         System.out.println("Inside f(): Changing m.i from " + m.i + " to 15");

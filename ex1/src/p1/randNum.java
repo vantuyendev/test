@@ -1,4 +1,4 @@
-package ex1;
+package p1;
 import java.util.Random;
 public class randNum {
 public static int generateRandomNumber() {

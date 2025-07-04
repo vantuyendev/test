@@ -1,4 +1,4 @@
-package testEx1;
+package testp1;
 public class CastingTest {
     public static void testDouble() {
         System.out.println("=== Testing Double Casting ===");

@@ -1,4 +1,4 @@
-package ex1;
+package p1;
 public class CaseCake {
     public static void cake(int iterations) {
         System.out.println("=== Testing Case/Switch with Cake ===");

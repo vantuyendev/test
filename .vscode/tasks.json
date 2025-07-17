@@ -1,0 +1,29 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Compile and Run Java App",
+			"type": "shell",
+			"command": "cd ex1 && javac -d bin src/*.java test/*.java && java -cp bin App",
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Compile Java Project with Packages",
+			"type": "shell",
+			"command": "cd ex1 && javac -d bin src/ex1/*.java && javac -d bin test/testEx1/*.java && javac -d bin -cp bin src/*.java && javac -d bin -cp bin test/*.java",
+			"group": "build",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Run TestTime",
+			"type": "shell",
+			"command": "cd ex1 && java -cp bin TestTime",
+			"group": "test",
+			"isBackground": false,
+			"dependsOn": "Compile Java Project with Packages"
+		}
+	]
+}

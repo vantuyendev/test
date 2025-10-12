@@ -1,0 +1,81 @@
+/* Stylesheet for Springtime in Michigan website */
+
+/* Skip to Main Content link - always visible */
+a[href="#main"] {
+    background-color: #000066;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    text-align: center;
+}
+
+a[href="#main"]:hover {
+    background-color: #000099;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 115%;
+}
+
+header {
+    background-color: #d3d3d3;
+}
+
+nav {
+    background-color: #aed8e6;
+}
+
+main {
+    background-color: #fffacd;
+    font-size: 120%;
+}
+
+footer {
+    background-color: #d3d3d3;
+}
+
+/* li {
+    display: inline-block;
+    width: 30%;
+} */
+
+nav {
+    display: inline-block;
+    width: 80%;
+}
+
+nav img {
+    width: 10%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 40% 40%;
+    justify-content: space-around;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.grid img {
+    width: 100%;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+h1 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #000066;
+}
+
+p {
+    line-height: 2;
+}
+

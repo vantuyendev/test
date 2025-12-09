@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'com.phenikaa'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+java {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+dependencies {
+    // Standard Java - no external dependencies needed
+}
+
+application {
+    mainClass = 'ui.MainFrame'
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes(
+            'Main-Class': 'ui.MainFrame',
+            'Manifest-Version': '1.0'
+        )
+    }
+    
+    // Make a fat JAR with all classes
+    from sourceSets.main.output
+}
+
+task run(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'ui.MainFrame'
+}

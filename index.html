@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Quản Lý Điểm Học Tập THCS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-section">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>Quản Lý Điểm Học Tập THCS</h1>
+            </div>
+            <div class="header-info">
+                <span class="school-name">Trường Đại Học Phenikaa</span>
+                <span class="date-time" id="dateTime"></span>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" data-tab="dashboard">
+                <i class="fas fa-chart-line"></i> Bảng Điều Khiển
+            </button>
+            <button class="tab-btn" data-tab="students">
+                <i class="fas fa-users"></i> Quản Lý Học Sinh
+            </button>
+            <button class="tab-btn" data-tab="scores">
+                <i class="fas fa-file-alt"></i> Quản Lý Điểm
+            </button>
+            <button class="tab-btn" data-tab="reports">
+                <i class="fas fa-bar-chart"></i> Báo Cáo & Thống Kê
+            </button>
+            <button class="tab-btn" data-tab="settings">
+                <i class="fas fa-cog"></i> Cài Đặt
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <section id="dashboard" class="tab-content active">
+                <div class="section-header">
+                    <h2>Bảng Điều Khiển</h2>
+                    <button class="btn btn-primary" id="refreshDashboard">
+                        <i class="fas fa-sync"></i> Làm Mới
+                    </button>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #3498db;">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Tổng Học Sinh</h3>
+                            <p class="stat-number" id="totalStudents">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e74c3c;">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Xuất Sắc</h3>
+                            <p class="stat-number" id="excellent">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f39c12;">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Giỏi</h3>
+                            <p class="stat-number" id="good">0</p>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #27ae60;">
+                            <i class="fas fa-thumbs-up"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Khá</h3>
+                            <p class="stat-number" id="average">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="top-students">
+                    <h3>Top 5 Học Sinh Có DTBC Cao Nhất</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã HS</th>
+                                <th>Họ Tên</th>
+                                <th>Lớp</th>
+                                <th>DTBC</th>
+                                <th>Xếp Loại</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topStudentsBody">
+                            <tr>
+                                <td colspan="6" class="text-center">Chưa có dữ liệu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Students Management Tab -->
+            <section id="students" class="tab-content">
+                <div class="section-header">
+                    <h2>Quản Lý Học Sinh</h2>
+                    <button class="btn btn-primary" id="addStudentBtn">
+                        <i class="fas fa-plus"></i> Thêm Học Sinh
+                    </button>
+                </div>
+
+                <!-- Add/Edit Student Form -->
+                <div class="form-container" id="studentFormContainer" style="display: none;">
+                    <h3 id="formTitle">Thêm Học Sinh Mới</h3>
+                    <form id="studentForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentId">Mã Học Sinh *</label>
+                                <input type="text" id="studentId" required placeholder="VD: HS001">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentName">Họ Tên *</label>
+                                <input type="text" id="studentName" required placeholder="Nhập họ tên">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentClass">Lớp *</label>
+                                <input type="text" id="studentClass" required placeholder="VD: 9A1">
+                            </div>
+                            <div class="form-group">
+                                <label for="studentBirthYear">Năm Sinh *</label>
+                                <input type="number" id="studentBirthYear" required placeholder="VD: 2010" min="1990" max="2015">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Lưu
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="cancelStudentForm">
+                                <i class="fas fa-times"></i> Hủy
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Students Table -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Mã HS</th>
+                            <th>Họ Tên</th>
+                            <th>Lớp</th>
+                            <th>Năm Sinh</th>
+                            <th>Số Môn</th>
+                            <th>Hành Động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTableBody">
+                        <tr>
+                            <td colspan="6" class="text-center">Chưa có học sinh</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Scores Management Tab -->
+            <section id="scores" class="tab-content">
+                <div class="section-header">
+                    <h2>Quản Lý Điểm</h2>
+                </div>
+
+                <div class="score-search">
+                    <div class="form-group">
+                        <label for="searchStudent">Chọn Học Sinh</label>
+                        <select id="searchStudent">
+                            <option value="">-- Chọn học sinh --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Add Score Form -->
+                <div class="form-container" id="scoreFormContainer" style="display: none;">
+                    <h3>Thêm/Sửa Điểm Môn Học</h3>
+                    <form id="scoreForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="subjectName">Môn Học *</label>
+                                <input type="text" id="subjectName" required placeholder="VD: Toán">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="scoreRegular">Điểm Thường Xuyên *</label>
+                                <div class="input-group">
+                                    <input type="number" id="scoreRegular" required placeholder="0-10" min="0" max="10" step="0.5">
+                                    <button type="button" class="btn-add-score" id="addRegularScore">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                                <div id="regularScoresList" class="score-list"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="scoreMidterm">Điểm Giữa Kỳ *</label>
+                                <input type="number" id="scoreMidterm" required placeholder="0-10" min="0" max="10" step="0.5">
+                            </div>
+                            <div class="form-group">
+                                <label for="scoreFinal">Điểm Cuối Kỳ *</label>
+                                <input type="number" id="scoreFinal" required placeholder="0-10" min="0" max="10" step="0.5">
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-save"></i> Lưu Điểm
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="cancelScoreForm">
+                                <i class="fas fa-times"></i> Hủy
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Scores Table -->
+                <div id="scoresDisplay">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Môn Học</th>
+                                <th>Điểm TX</th>
+                                <th>Điểm GK</th>
+                                <th>Điểm CK</th>
+                                <th>DTB Môn</th>
+                                <th>Hành Động</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scoresTableBody">
+                            <tr>
+                                <td colspan="6" class="text-center">Chọn học sinh để xem điểm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Reports Tab -->
+            <section id="reports" class="tab-content">
+                <div class="section-header">
+                    <h2>Báo Cáo & Thống Kê</h2>
+                </div>
+
+                <div class="reports-grid">
+                    <!-- Statistics Card -->
+                    <div class="report-card">
+                        <h3>Thống Kê Xếp Loại</h3>
+                        <div class="stats-breakdown">
+                            <div class="stat-item">
+                                <span class="stat-label">Xuất Sắc (≥9.0)</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill excellent-fill" id="excellentBar"></div>
+                                </div>
+                                <span class="stat-value" id="excellentCount">0/0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Giỏi (≥8.0)</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill good-fill" id="goodBar"></div>
+                                </div>
+                                <span class="stat-value" id="goodCount">0/0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Khá (≥6.5)</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill average-fill" id="averageBar"></div>
+                                </div>
+                                <span class="stat-value" id="averageCount">0/0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Trung Bình (≥5.0)</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill fair-fill" id="fairBar"></div>
+                                </div>
+                                <span class="stat-value" id="fairCount">0/0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Yếu (<5.0)</span>
+                                <div class="stat-bar">
+                                    <div class="stat-fill weak-fill" id="weakBar"></div>
+                                </div>
+                                <span class="stat-value" id="weakCount">0/0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Student Rankings -->
+                    <div class="report-card">
+                        <h3>Xếp Hạng Học Sinh</h3>
+                        <table class="table compact-table">
+                            <thead>
+                                <tr>
+                                    <th>Xếp Hạng</th>
+                                    <th>Họ Tên</th>
+                                    <th>DTBC</th>
+                                    <th>Loại</th>
+                                </tr>
+                            </thead>
+                            <tbody id="rankingsBody">
+                                <tr>
+                                    <td colspan="4" class="text-center">Chưa có dữ liệu</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Subject Statistics -->
+                <div class="report-card">
+                    <h3>Thống Kê Theo Môn Học</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Môn Học</th>
+                                <th>Số HS Có Điểm</th>
+                                <th>DTB Môn Cao Nhất</th>
+                                <th>DTB Môn Thấp Nhất</th>
+                                <th>DTB Môn Trung Bình</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subjectsBody">
+                            <tr>
+                                <td colspan="5" class="text-center">Chưa có dữ liệu</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Settings Tab -->
+            <section id="settings" class="tab-content">
+                <div class="section-header">
+                    <h2>Cài Đặt</h2>
+                </div>
+
+                <div class="settings-container">
+                    <div class="settings-card">
+                        <h3>Quản Lý Dữ Liệu</h3>
+                        <div class="settings-group">
+                            <p>Xuất dữ liệu hệ thống dưới dạng file JSON để sao lưu.</p>
+                            <button class="btn btn-primary" id="exportDataBtn">
+                                <i class="fas fa-download"></i> Xuất Dữ Liệu
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Nhập Dữ Liệu</h3>
+                        <div class="settings-group">
+                            <p>Nhập dữ liệu từ file JSON đã sao lưu trước đó.</p>
+                            <input type="file" id="importFile" accept=".json" style="display: none;">
+                            <button class="btn btn-primary" id="importDataBtn">
+                                <i class="fas fa-upload"></i> Nhập Dữ Liệu
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card danger">
+                        <h3>Xóa Tất Cả Dữ Liệu</h3>
+                        <div class="settings-group">
+                            <p class="text-danger">Cảnh báo: Hành động này sẽ xóa tất cả dữ liệu. Không thể hoàn tác!</p>
+                            <button class="btn btn-danger" id="clearDataBtn">
+                                <i class="fas fa-trash"></i> Xóa Tất Cả
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="settings-card">
+                        <h3>Thông Tin Hệ Thống</h3>
+                        <div class="info-group">
+                            <p><strong>Phiên bản:</strong> 1.0.0</p>
+                            <p><strong>Ngôn ngữ lập trình:</strong> JavaScript, HTML5, CSS3</p>
+                            <p><strong>Lưu trữ:</strong> Local Storage Browser</p>
+                            <p><strong>Đối tượng sử dụng:</strong> Giáo viên, Quản trị viên</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal for Delete Confirmation -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <h3>Xác Nhận Xóa</h3>
+            <p id="deleteMessage"></p>
+            <div class="modal-actions">
+                <button class="btn btn-danger" id="confirmDelete">Xóa</button>
+                <button class="btn btn-secondary" id="cancelDelete">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for View Details -->
+    <div class="modal" id="detailsModal">
+        <div class="modal-content">
+            <span class="close" id="closeDetails">&times;</span>
+            <h3 id="detailsTitle"></h3>
+            <div id="detailsContent"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

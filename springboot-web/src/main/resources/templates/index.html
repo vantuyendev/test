@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Điểm Học Tập THCS</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>📚 Quản Lý Điểm Học Tập THCS</h1>
+            <ul class="nav-links">
+                <li><a href="#dashboard" class="nav-link active" data-tab="dashboard">📊 Bảng Điều Khiển</a></li>
+                <li><a href="#students" class="nav-link" data-tab="students">👨‍🎓 Học Sinh</a></li>
+                <li><a href="#scores" class="nav-link" data-tab="scores">📝 Điểm Số</a></li>
+                <li><a href="#reports" class="nav-link" data-tab="reports">📈 Báo Cáo</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container main-content">
+        <!-- Dashboard Tab -->
+        <div id="dashboard-tab" class="tab-content active">
+            <h2>📊 Bảng Điều Khiển</h2>
+            <div class="dashboard-grid">
+                <div class="stat-card">
+                    <h3>Tổng Học Sinh</h3>
+                    <p id="total-students" class="stat-number">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Xuất Sắc</h3>
+                    <p id="xat-sac" class="stat-number stat-excellent">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Giỏi</h3>
+                    <p id="gioi" class="stat-number stat-good">0</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Khá</h3>
+                    <p id="kha" class="stat-number stat-average">0</p>
+                </div>
+            </div>
+
+            <div class="dashboard-row">
+                <div class="dashboard-section">
+                    <h3>Top 5 Học Sinh Xuất Sắc</h3>
+                    <table id="top-students-table" class="table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã HS</th>
+                                <th>Tên</th>
+                                <th>Lớp</th>
+                                <th>DTBC</th>
+                                <th>Xếp Loại</th>
+                            </tr>
+                        </thead>
+                        <tbody id="top-students-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Students Tab -->
+        <div id="students-tab" class="tab-content">
+            <h2>👨‍🎓 Quản Lý Học Sinh</h2>
+            <form id="student-form" class="form-grid">
+                <div class="form-group">
+                    <label>Mã HS:</label>
+                    <input type="text" id="ma-hs" placeholder="VD: HS001" required>
+                </div>
+                <div class="form-group">
+                    <label>Tên HS:</label>
+                    <input type="text" id="ten-hs" placeholder="Họ và tên" required>
+                </div>
+                <div class="form-group">
+                    <label>Lớp:</label>
+                    <input type="text" id="lop" placeholder="VD: 7A" required>
+                </div>
+                <div class="form-group">
+                    <label>Năm Sinh:</label>
+                    <input type="number" id="nam-sinh" placeholder="2010" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Thêm HS</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetStudentForm()">Xóa Form</button>
+                </div>
+            </form>
+
+            <h3>Danh Sách Học Sinh</h3>
+            <table id="students-table" class="table">
+                <thead>
+                    <tr>
+                        <th>Mã HS</th>
+                        <th>Tên</th>
+                        <th>Lớp</th>
+                        <th>Năm Sinh</th>
+                        <th>DTBC</th>
+                        <th>Xếp Loại</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody id="students-body">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Scores Tab -->
+        <div id="scores-tab" class="tab-content">
+            <h2>📝 Quản Lý Điểm</h2>
+            <form id="score-form" class="form-grid">
+                <div class="form-group">
+                    <label>Học Sinh:</label>
+                    <select id="hoc-sinh-select" required>
+                        <option value="">-- Chọn học sinh --</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Môn Học:</label>
+                    <input type="text" id="mon-hoc" placeholder="VD: Toán" required>
+                </div>
+                <div class="form-group">
+                    <label>Điểm TX (cách nhau bằng ,):</label>
+                    <input type="text" id="diem-tx" placeholder="VD: 8,8.5,9" required>
+                </div>
+                <div class="form-group">
+                    <label>Điểm GK:</label>
+                    <input type="number" id="diem-gk" placeholder="0-10" min="0" max="10" step="0.5" required>
+                </div>
+                <div class="form-group">
+                    <label>Điểm CK:</label>
+                    <input type="number" id="diem-ck" placeholder="0-10" min="0" max="10" step="0.5" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Thêm Điểm</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetScoreForm()">Xóa Form</button>
+                </div>
+            </form>
+
+            <h3>Danh Sách Điểm</h3>
+            <table id="scores-table" class="table">
+                <thead>
+                    <tr>
+                        <th>Học Sinh</th>
+                        <th>Môn Học</th>
+                        <th>Điểm TX</th>
+                        <th>Điểm GK</th>
+                        <th>Điểm CK</th>
+                        <th>DTB Môn</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody id="scores-body">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Reports Tab -->
+        <div id="reports-tab" class="tab-content">
+            <h2>📈 Báo Cáo & Thống Kê</h2>
+            
+            <div class="report-section">
+                <h3>Xếp Loại Học Sinh</h3>
+                <table id="rankings-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã HS</th>
+                            <th>Tên</th>
+                            <th>Lớp</th>
+                            <th>DTBC</th>
+                            <th>Xếp Loại</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rankings-body">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="report-section">
+                <h3>Thống Kê Theo Môn Học</h3>
+                <table id="subject-stats-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Môn Học</th>
+                            <th>Điểm Cao Nhất</th>
+                            <th>Điểm Thấp Nhất</th>
+                            <th>Điểm Trung Bình</th>
+                        </tr>
+                    </thead>
+                    <tbody id="subject-stats-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

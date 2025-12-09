@@ -1,14 +1,19 @@
-# Hệ Thống Quản Lý Điểm Học Tập THCS - Phiên Bản Java Desktop
+# Hệ Thống Quản Lý Điểm Học Tập THCS - Spring Boot Web Application
 
 ## 📋 Giới Thiệu
 
-Đây là phiên bản **Java Desktop GUI** của **Hệ Thống Quản Lý Điểm Học Tập** cho học sinh Trung Học Cơ Sở (THCS), được phát triển hoàn toàn bằng **Java** với **Swing** để tạo giao diện đồ họa, dựa trên các yêu cầu trong báo cáo môn **Lập Trình Hướng Đối Tượng (OOP)** của trường Đại Học Phenikaa.
+Đây là **Spring Boot Web Application** của **Hệ Thống Quản Lý Điểm Học Tập** cho học sinh Trung Học Cơ Sở (THCS), được phát triển hoàn toàn bằng **Java Spring Boot** với giao diện web hiện đại, dựa trên các yêu cầu trong báo cáo môn **Lập Trình Hướng Đối Tượng (OOP)** của trường Đại Học Phenikaa.
 
 Ứng dụng này áp dụng **toàn bộ nguyên lý OOP** bao gồm:
 - ✅ **Đóng gói (Encapsulation)**
 - ✅ **Kế thừa (Inheritance)**
 - ✅ **Đa hình (Polymorphism)**
 - ✅ **Trừu tượng (Abstraction)**
+
+## 🌐 Live Demo
+
+**Link ứng dụng**: Có thể deploy lên Railway (free) để có link cố định
+- Xem hướng dẫn: `springboot-web/DEPLOYMENT_GUIDE.md`
 
 ## 🚀 Tính Năng Chính
 
@@ -48,55 +53,92 @@
 
 ### Công Nghệ
 - **Ngôn ngữ**: Java 17+
-- **GUI Framework**: Swing (Java Standard Library)
-- **Build System**: Gradle (có sẵn) hoặc Javac (đơn giản)
-- **Persistence**: Java Object Serialization
+- **Framework**: Spring Boot 3.2.1
+- **Database**: H2 (Embedded SQL Database)
+- **Build System**: Gradle
+- **Frontend**: HTML5, CSS3, JavaScript
 
 ### Yêu Cầu Hệ Thống
 - **JDK 17** hoặc cao hơn
-- **Gradle** (tùy chọn, có thể biên dịch với javac)
+- **Gradle** (đã có trong project)
 - **RAM**: Tối thiểu 512MB
+- **Port**: 8080 (có thể thay đổi)
 
 ## 📁 Cấu Trúc Dự Án
 
 ```
 test/
-├── src/main/java/
-│   ├── models/
-│   │   ├── ConNguoi.java          # Lớp cơ sở (Abstract)
-│   │   ├── HocSinh.java            # Lớp học sinh (extends ConNguoi)
-│   │   ├── DiemMonHoc.java         # Lớp điểm môn học
-│   │   ├── QuanLyDiem.java         # Lớp quản lý chính (Controller)
-│   │   ├── IXepLoai.java           # Interface xếp loại (Polymorphism)
-│   │   └── XepLoaiQuyCheChuan.java # Implementation xếp loại
-│   ├── ui/
-│   │   ├── MainFrame.java          # Cửa sổ chính
-│   │   ├── DashboardPanel.java     # Panel bảng điều khiển
-│   │   ├── QuanLyHocSinhPanel.java # Panel quản lý HS
-│   │   ├── QuanLyDiemPanel.java    # Panel quản lý điểm
-│   │   └── BaoCaoPanel.java        # Panel báo cáo
-│   └── utils/
-│       └── DataPersistence.java    # Lưu/tải dữ liệu
-├── build.gradle                    # Gradle build configuration
-├── run.sh                          # Script chạy trên Linux/Mac
-├── run.bat                         # Script chạy trên Windows
-├── README.md                       # Tài liệu này
-└── data.ser                        # File lưu trữ dữ liệu (tạo tự động)
+└── springboot-web/
+    ├── src/main/
+    │   ├── java/com/quanlydiem/
+    │   │   ├── QuanLyDiemApplication.java  # Main application
+    │   │   ├── models/                     # JPA Entities
+    │   │   │   ├── HocSinh.java
+    │   │   │   ├── DiemMonHoc.java
+    │   │   │   ├── IXepLoai.java
+    │   │   │   └── XepLoaiQuyCheChuan.java
+    │   │   ├── controllers/                # REST Controllers
+    │   │   │   ├── HocSinhController.java
+    │   │   │   ├── DiemMonHocController.java
+    │   │   │   └── PageController.java
+    │   │   ├── services/                   # Business Logic
+    │   │   │   ├── HocSinhService.java
+    │   │   │   └── DiemMonHocService.java
+    │   │   └── repositories/               # Data Access
+    │   │       ├── HocSinhRepository.java
+    │   │       └── DiemMonHocRepository.java
+    │   └── resources/
+    │       ├── application.yml             # Configuration
+    │       ├── templates/
+    │       │   └── index.html              # Frontend
+    │       └── static/
+    │           ├── css/style.css
+    │           └── js/app.js
+    ├── build.gradle                        # Gradle build configuration
+    ├── Procfile                            # Railway deployment
+    ├── system.properties                   # Java version
+    ├── run.sh                              # Script chạy
+    ├── build.sh                            # Script build
+    └── README.md                           # Documentation
 ```
 
 ## 🚀 Hướng Dẫn Cài Đặt & Chạy
 
-### **Cách 1: Sử dụng Gradle (Khuyến nghị)**
+### **Chạy Cục Bộ (Local Development)**
 
 ```bash
-# 1. Biên dịch
-./gradlew build
+# Di chuyển vào folder Spring Boot
+cd springboot-web
 
-# 2. Chạy ứng dụng
-./gradlew run
+# Chạy ứng dụng
+./run.sh
+
+# Hoặc sử dụng Gradle trực tiếp
+./gradlew bootRun
 ```
 
-### **Cách 2: Sử dụng Script Tự Động**
+**Truy cập**: http://localhost:8080
+
+### **Build JAR File (Production)**
+
+```bash
+cd springboot-web
+./build.sh
+
+# Chạy JAR
+java -jar build/libs/quan-ly-diem-1.0.0.jar
+```
+
+### **Deploy lên Railway (Free - Link Cố Định)**
+
+Xem hướng dẫn chi tiết trong `springboot-web/DEPLOYMENT_GUIDE.md`
+
+**Tóm tắt:**
+1. Push code lên GitHub
+2. Vào https://railway.app
+3. "New Project" → "Deploy from GitHub"
+4. Chọn repository
+5. Nhận link: `https://quan-ly-diem-xxx.railway.app`
 
 **Trên Linux/Mac:**
 ```bash

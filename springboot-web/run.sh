@@ -2,4 +2,8 @@
 set -e
 
 echo "🚀 Starting Spring Boot application..."
-./gradlew bootRun
+echo "📍 Server will run at: http://localhost:8081"
+echo ""
+
+gradle bootRun
+
